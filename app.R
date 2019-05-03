@@ -84,7 +84,7 @@ server<-function(input, output) {
 
 			lines(x[ord], sp.data()$spl.fit[ord], lwd= 2)
 
-			matplot(x[ord], sp.data()$weighted.bases[ord, ], type= "b", ylab= "Weighted basis functions", xlab= "Covariate (x)", main= "Cubic spline basis functions")
+			matplot(x[ord], sp.data()$weighted.bases[ord, ], type= "b", lty= 1, ylab= "Weighted basis functions", xlab= "Covariate (x)", main= "Cubic spline basis functions")
 
 			abline(v= sp.data()$knots.vec.std * (sp.data()$max.x - sp.data()$min.x) + sp.data()$min.x, col= grey(0.8), lty= 1, lwd= 2)
 
@@ -106,43 +106,43 @@ ui<-fluidPage(theme=shinytheme("flatly"),
     	sidebarPanel(
 
       		sliderInput("knot1",
-                  "Weight of boundary knot 1:",
+                  "Weight of **basis 1** (intercept):",
                   min = -10,
                   max = 10,
                   value = 1),
 
 					sliderInput("knot2",
-                  "Weight of internal knot 1:",
+                  "Weight of **basis 2** (linear trend):",
                   min = -10,
                   max = 10,
                   value = 1),
     
 					sliderInput("knot3",
-                  "Weight of internal knot 2:",
+                  "Weight of basis 3 (spline basis for knot 1):",
                   min = -10,
                   max = 10,
                   value = 1),
 
 				sliderInput("knot4",
-                  "Weight of internal knot 3:",
+                  "Weight of basis 4 (spline basis for knot 2):",
                   min = -10,
                   max = 10,
                   value = 1),
 
 					sliderInput("knot5",
-                  "Weight of internal knot 4:",
+                  "Weight of basis 5 (spline basis for knot 3):",
                   min = -10,
                   max = 10,
                   value = 1),
 					
 					sliderInput("knot6",
-                  "Weight of internal knot 5:",
+                  "Weight of basis 6 (spline basis for knot 4):",
                   min = -10,
                   max = 10,
                   value = 1),
 
 					sliderInput("knot7",
-                  "Weight of boundary knot 2:",
+                  "Weight of basis 7 (spline basis for knot 5):",
                   min = -10,
                   max = 10,
                   value = 1)),

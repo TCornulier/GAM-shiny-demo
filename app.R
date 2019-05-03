@@ -106,13 +106,13 @@ ui<-fluidPage(theme=shinytheme("flatly"),
     	sidebarPanel(
 
       		sliderInput("knot1",
-                  "Weight of **basis 1** (intercept):",
+                  "Weight of basis 1 (intercept):",
                   min = -10,
                   max = 10,
                   value = 1),
 
 					sliderInput("knot2",
-                  "Weight of **basis 2** (linear trend):",
+                  "Weight of basis 2 (linear trend):",
                   min = -10,
                   max = 10,
                   value = 1),

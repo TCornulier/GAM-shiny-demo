@@ -78,15 +78,15 @@ server<-function(input, output) {
 
 			ord<-order(x)
 
-			plot(y[ord] ~ x[ord], pch= "+", main= "Fitted Spline", xlab= "Covariate (x)", ylab= "Response (y)")
+			matplot(x[ord], sp.data()$weighted.bases[ord, ], type= "b", lty= 1, ylab= "Weighted basis functions", xlab= "Covariate (x)", main= "Cubic spline basis functions")
+
+			abline(v= sp.data()$knots.vec.std * (sp.data()$max.x - sp.data()$min.x) + sp.data()$min.x, col= grey(0.8), lty= 1, lwd= 2)
+
+	    		plot(y[ord] ~ x[ord], pch= "+", main= "Fitted Spline", xlab= "Covariate (x)", ylab= "Response (y)")
 
 			abline(v=sp.data()$knots.vec.std * (sp.data()$max.x - sp.data()$min.x) + sp.data()$min.x, col= grey(0.8), lty= 1, lwd= 2)
 
 			lines(x[ord], sp.data()$spl.fit[ord], lwd= 2)
-
-			matplot(x[ord], sp.data()$weighted.bases[ord, ], type= "b", lty= 1, ylab= "Weighted basis functions", xlab= "Covariate (x)", main= "Cubic spline basis functions")
-
-			abline(v= sp.data()$knots.vec.std * (sp.data()$max.x - sp.data()$min.x) + sp.data()$min.x, col= grey(0.8), lty= 1, lwd= 2)
 
     
         })

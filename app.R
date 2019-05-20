@@ -24,10 +24,10 @@ fit.spline<- function(x=x, y=y, knots.N= NULL, knots.vec= NULL, basis.coef){
 	})
 	weighted.bases<- t(t(X) * basis.coef) # multiply the cubic spline components by their respective basis coefficient
 	spl.fit<- rowSums(weighted.bases) # fitted cubic spline is the sum of all components (spline bases)
-	RMSE= sqrt(mean((x - spl.fit)^2)) # RMSE
+	ESS= sum((x - spl.fit)^2) # Error Sum of Squares
     ### Output
     out.sp<-list(knots.vec.std=knots.vec.std, min.x=min.x, max.x=max.x, weighted.bases=weighted.bases, spl.fit=spl.fit, basis.coef=basis.coef,
-				RMSE=RMSE)
+				ESS=ESS)
 
     return(out.sp)
 }
@@ -55,9 +55,9 @@ server<-function(input, output) {
 
 		output$caption<-renderText({
 
-				rmse<-round(sp.data()$RMSE, digits=2)				
+				ESS<-round(sp.data()$ESS, digits=2)				
 
-				print(paste("RMSE = ", rmse))
+				print(paste("Error Sum of Squares = ", ESS))
 
 		})
   

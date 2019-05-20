@@ -24,7 +24,7 @@ fit.spline<- function(x=x, y=y, knots.N= NULL, knots.vec= NULL, basis.coef){
 	})
 	weighted.bases<- t(t(X) * basis.coef) # multiply the cubic spline components by their respective basis coefficient
 	spl.fit<- rowSums(weighted.bases) # fitted cubic spline is the sum of all components (spline bases)
-	ESS= sum((x - spl.fit)^2) # Error Sum of Squares
+	ESS= sum((y - spl.fit)^2) # Error Sum of Squares
     ### Output
     out.sp<-list(knots.vec.std=knots.vec.std, min.x=min.x, max.x=max.x, weighted.bases=weighted.bases, spl.fit=spl.fit, basis.coef=basis.coef,
 				ESS=ESS)

@@ -34,7 +34,7 @@ fit.spline<- function(x=x, y=y, knots.N= NULL, knots.vec= NULL, basis.coef){
 
 
 server<-function(input, output) {
-
+	sq<- read.table("C:/Users/nhy577/Documents/_toma/projects/LATAM/STATS training/Workshop1/ShinyGAM/squidIMASM.txt", header=TRUE)
     #### Input
 	sp.data<-reactive({
 
